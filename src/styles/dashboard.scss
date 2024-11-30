@@ -1,0 +1,332 @@
+@import './_config.scss';
+
+.dashboard-grid {
+    padding: 15px;
+    display: grid;
+    grid-template-areas: 
+        'greeting'
+        'create'
+        'budget-title'
+        'budget'
+        ;
+        margin-bottom: 180px;
+    .greeting {
+        grid-area: greeting;
+        font-size: 2.7rem;
+        .accent {
+            color: rgb(0, 179, 188);
+        }
+    }
+    .budget-title {
+        grid-area: budget-title;
+        margin-bottom: 30px;
+        font-size: 2rem;
+    }
+    .create-bugets-grid {
+        grid-area: create;
+        display: grid;
+        grid-template-columns:1fr 1fr;
+        padding: 20px 5px;
+        gap: 40px;
+        .create-budget, .create-expense {
+            padding: 40px 45px;
+            border-radius: 12px;
+            height: max-content;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(153, 153, 153, 0.604);
+            position: relative;
+            &::after {
+                content: '';
+                position: absolute;
+                height: 92.5%;
+                width: 96%;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                border: 2px dashed black;
+                border-radius: inherit;
+            }
+            h3 {
+                margin-bottom: 10px;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+                input {
+                    padding: 9px;
+                    margin-bottom: 10px;
+                    font-size: 14px;
+                    border-radius: 5px;
+                    outline: 1px solid transparent;
+                    border: 2px solid black;
+                    transition: .2s;
+                    &:focus {
+                        outline: 1px solid $primaryClr;
+                        border: 2px solid $primaryClr;
+                    }
+                }
+                label {
+                    font-size: 16px;
+                    font-weight: bold
+                }
+                .create-budget-btn, .create-expense-btn {
+                    @include flex;
+                    gap: 8px;
+                    color: white;
+                    background-color: black;
+                    padding: 13px;
+                    border: none;
+                    border-radius: 3px;
+                    font-size: 14px;
+                    width: 150px;
+                    &:disabled {
+                        background-color: rgb(82, 82, 82);
+                        cursor: progress;
+                    }
+                }
+            }
+        }
+        .create-expense {
+            h3 {
+                span {
+                    color: $primaryClr;
+                }
+            }
+            select {
+                padding: 9px;
+                font-size: 14px;
+                border-radius: 5px;
+                outline: 1px solid transparent;
+                border: 2px solid black;
+                margin-bottom: 10px;
+                transition: .2s;
+                &:focus {
+                    outline: 1px solid $primaryClr;
+                    border: 2px solid $primaryClr;
+                }
+            }
+        }
+    }
+    .budgets-container {
+        grid-area: budget;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        width: 80%;
+        margin-bottom: 30px;
+        .budget {
+            border: 3px solid hsl(var(--accent));
+            color: hsl(var(--accent));
+            border-radius: 15px;
+            progress{
+                height: 20px;
+                width: 80%;
+                transition: .3s;
+            }
+            .details {
+                padding: 10px 25px;
+                .progress-text {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 10px 0;
+                    small {
+                        font-size: 14px;
+                        font-weight: 600;
+                        &:last-child {
+                            color: rgb(59, 59, 59);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .expenses-container {
+        .expenses-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        .expenses-link {
+            @include flex;
+            width: 165px;
+            padding: 15px;
+            gap: 5px;
+            color: white;
+            font-size: 15px;
+            border: 2px solid black;
+            background-color: black;
+            border-radius: 3px;
+            transition: .3s ease-out;
+            position: relative;
+            &::after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 100%;
+                border: 3px solid transparent;
+                border-radius: 7px;
+                transition: .2s ease-out;
+            }
+            &:hover {
+                &::after {
+                    width: 106%;
+                    height: 120%;
+                    border: 3px solid black;
+                }
+            }
+        }
+        .delete-expense {
+            @include btn(#ee5252, #ff41411d);
+            padding: 10px 12px;
+            &:hover::after {
+                width: 117%;
+                height: 115%;
+            }
+        }
+    }
+}
+
+.all-expenses-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    h1 {
+        font-size: 3rem;
+    }
+    .container {
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 50px;
+            small {
+                font-size: 14px;
+            }
+        }
+        .delete-expense {
+            @include btn(#ee5252, #ff41411d);
+            padding: 10px 12px;
+            &:hover::after {
+                width: 117%;
+                height: 115%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1135px) {
+    .dashboard-grid {
+        padding: 15px 0;
+        .create-bugets-grid {
+            gap: 25px;
+        }
+    }
+}
+@media screen and (max-width: 1000px) {
+    .dashboard-grid {
+        margin-bottom: 50px;
+        .create-bugets-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    table {
+        width: 100%;
+    }
+    .all-expenses-container table {
+        width: 100%;
+    }
+    .dashboard-grid {
+        .greeting {
+            font-size: 2.3rem;
+        }
+    }
+}
+@media screen and (max-width: 520px) {
+    .dashboard-grid {
+        padding: 50px 8%;
+        .greeting {
+            font-size: 2.5rem;
+        }
+        .expenses-container {
+            width: 110%;
+            .delete-expense {
+               padding: 7px 9px;;
+           }
+        }
+        .expenses-container .expenses-link {
+            padding: 12px;
+            width: 38%;
+            font-size: 14px;
+        }
+    }
+    .all-expenses-container {
+        padding: 40px;
+        h1 {
+            font-size: 2.7rem;
+        }
+        .container {
+            .delete-expense {
+                padding: 7px 9px;;
+            }
+            h2 {
+                font-size: 1.8rem;
+                small {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 470px) {
+    .dashboard-grid {
+        padding: 50px 8%;
+        .create-bugets-grid {
+            .create-budget::after, .create-expense::after {
+                height: 94%;
+                width: 95%;
+            }
+        }
+        .greeting {
+            font-size: 2.1rem;
+        }
+        .expenses-container .delete-expense {
+            padding: 6px 7px;
+            &:hover::after {
+                width: 122%;
+                height: 125%;
+            }
+        }
+        .expenses-container .expenses-link {
+            padding: 12px 5px;
+            width: 40%;
+            font-size: 13px;
+        }
+    }
+    table {
+        width: 110%;
+    }
+    .all-expenses-container {
+        table {
+            width: 110%;
+        }
+        h1 {
+            font-size: 2.2rem;
+        }
+        .container {
+            .delete-expense {
+                padding: 6px 7px;
+                &:hover::after {
+                    width: 122%;
+                    height: 125%;
+                }
+            }
+            h2 {
+                font-size: 1.5rem;
+                small {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}

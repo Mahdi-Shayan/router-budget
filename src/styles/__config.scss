@@ -1,0 +1,81 @@
+$texyClr: #cccccc;
+$secondTxtClr: rgb(180, 180, 180);
+$primaryClr: rgb(0, 177, 186);
+$color: hsl(0, 100%, 33%);
+
+:root {
+    --accent: 0, 75%, 46%;
+}
+
+@mixin flex($dir: row) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $dir;
+}
+
+@mixin btn($color: white, $bg: none) {
+    @include flex;
+    padding: 9px 15px;
+    gap: 5px;
+    color: $color;
+    font-size: 15px;
+    border: 2px solid $color;
+    background-color: $bg;
+    border-radius: 3px;
+    transition: .3s ease-out;
+    position: relative;
+    &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        border: 3px solid transparent;
+        border-radius: 7px;
+        transition: .2s ease-out;
+    }
+    &:hover {
+        background-color: $color;
+        color: white;
+        &::after {
+            width: 108%;
+            height: 130%;
+            border: 3px solid $color;
+        }
+    }
+}
+a {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+li {
+    list-style: none;
+}
+button {
+    cursor: pointer;
+}
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin-bottom: 20px;
+    thead {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    td, th {
+        text-align: center;
+        padding:  15px 11%;
+        width: 25%;
+    }
+    tbody tr:nth-child(odd) {
+        background-color: rgba(165, 222, 255, 0.173);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 1;
+}

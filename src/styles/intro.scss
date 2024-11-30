@@ -1,0 +1,227 @@
+@import './_config.scss';
+
+.intro-container {
+    display: grid;
+    grid-template-areas: 
+    'intro pic'
+    ;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 120px 0;
+    .intro {
+        grid-area: intro;
+        .title {
+            font-size: 1.8rem;
+            line-height: 55px;
+            margin-bottom: 20px;
+            span {
+                display: block;
+                color: $primaryClr;
+            }
+        }
+        .description {
+            font-size: 18px;
+            width: 80%;
+            margin-bottom: 30px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .username-input {
+                padding: 9px;
+                font-size: 14px;
+                width: 270px;
+                border-radius: 5px;
+                outline: 1px solid transparent;
+                border: 2px solid black;
+                transition: .2s;
+                &:focus {
+                    outline: 1px solid $primaryClr;
+                    border: 2px solid $primaryClr;
+                }
+            }
+            .create-btn {
+                @include flex;
+                gap: 8px;
+                color: white;
+                background-color: black;
+                padding: 13px;
+                border: none;
+                border-radius: 3px;
+                font-size: 14px;
+                width: 150px; 
+            }
+        }
+    }
+    .intro-pic {
+        grid-area: pic;
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 1390px) {
+    main {
+        height: 100vh;
+        overflow: hidden;
+    }
+    html {
+        font-size: .9rem;
+    }
+}
+@media screen and (max-width: 1330px) {
+    html {
+        font-size: .84rem;
+    }
+    .intro-container .intro{
+        .description {
+            font-size: 17px;
+        }
+    }
+}
+@media screen and (max-width: 1235px) {
+    html {
+        font-size: .8rem;
+    }
+    .intro-container .intro{
+        .description {
+            font-size: 17px;
+        }
+    }
+}
+@media screen and (max-width: 1110px) {
+    .intro-container .intro .title {
+        font-size: 2.6rem;
+    }
+    .intro-container {
+        grid-template-areas: 
+        'intro'
+        'pic'
+        ;
+        grid-template-columns: repeat(1, 1fr);
+        padding: 100px 12%;
+        gap: 60px;
+        .intro {
+            padding-left: 40px;
+            .title {
+                line-height: 80px;
+            }
+            .description {
+                font-size: 24px;
+            }
+            form .username-input{
+                width: 55%;
+                padding: 12px;
+            }
+        } 
+        .intro-pic {
+            width: 100%;
+        }
+        
+    }
+}
+@media screen and (max-width: 818px) {
+    .intro-container {
+        padding: 0 3%;
+        padding-top: 50px;
+        margin-bottom: 80px;
+        .intro {
+            padding-left: 40px;
+            .title {
+                line-height: 70px;
+            }
+            form {
+                .username-input{
+                    width: 60%;
+                    padding: 10px;
+                }
+                .create-btn {
+                    width: 120px;
+                    padding: 13px;
+                    font-size: 13px;
+                }
+            } 
+        } 
+    }
+    
+}
+@media screen and (max-width: 750px) {
+    .intro-container .intro .title {
+        font-size: 2.3rem;
+        line-height: 55px;
+    }
+    .intro-container {
+        .intro .description {
+            font-size: 19px;
+        }
+    }
+}
+@media screen and (max-width: 650px) {
+    .intro-container .intro .title {
+        font-size: 2.2rem;
+    }
+    .intro-container {
+        gap: 40px;
+        .intro .description {
+            font-size: 16px;
+        }
+    }
+}
+@media screen and (max-width: 580px) {
+    .intro-container .intro .title {
+        font-size: 2rem;
+    }
+    .intro-container {
+        margin-bottom: 50px;
+        .intro form {
+            .username-input{
+                width: 65%;
+            }
+        }    
+    }
+}
+@media screen and (max-width: 500px) {
+    .intro-container .intro .title {
+        font-size: 1.9rem;
+    }
+}
+@media screen and (max-width: 450px) {
+    .intro-container .intro .title {
+        font-size: 1.5rem;
+    }
+    .intro-container {
+        margin-bottom: 0;
+        .intro {
+            .title {
+                line-height: 44px;
+            }
+            form {
+                .username-input{
+                    padding: 8px;
+                }
+                .create-btn {
+                    width: 110px;
+                    padding: 11px;
+                    font-size: 12px;
+                }
+            } 
+        }
+    }
+}
+@media screen and (max-width: 414px) {
+    .intro-container .intro {
+        .title {
+            font-size: 1.5rem;
+        }
+    }
+    
+}
+@media screen and (max-width: 370px) {
+    .intro-container .intro {
+        .description {
+            font-size: 14px;
+        }
+        .title {
+            font-size: 1.4rem;
+        }
+    } 
+}

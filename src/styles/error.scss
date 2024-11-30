@@ -1,0 +1,28 @@
+@import '_config.scss';
+
+.error {
+    margin: 200px auto;
+    @include flex(column);
+    height: 100%;
+    font-size: 1.8rem;
+    text-align: center;
+    width: 80%;
+    h1 {
+        margin-bottom: 20px;
+    }
+    .btn-container {
+        @include flex;
+        gap: 20px;
+        .go-back, .back-home-link {
+            @include btn(black, white);
+            height: 45px;
+            border-radius: 5px;
+            &:hover {
+                &::after {
+                    width: 108%;
+                    height: 120%;
+                }
+            }
+        }
+    }
+}
